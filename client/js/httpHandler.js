@@ -5,6 +5,21 @@
   //
   // TODO: build the swim command fetcher here
   //
+  const swimCommandFetcher = () => {
+    $.ajax({
+      type: 'GET',
+      url: serverUrl,
+      success: (data) => {
+        SwimTeam.move(data); // need to find direction from server response
+      },
+      error: () => {
+        console.log('Failed');
+      }
+    });
+  }
+  setInterval(() => {
+    swimCommandFetcher();
+  }, 10000);
 
   /////////////////////////////////////////////////////////////////////
   // The ajax file uplaoder is provided for your convenience!
@@ -17,7 +32,7 @@
     $.ajax({
       type: 'POST',
       data: formData,
-      url: 'FILL_ME_IN', //possible mockServer.js in spec
+      url: serverUrl,
       cache: false,
       contentType: false,
       processData: false,
