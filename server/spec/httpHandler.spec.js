@@ -33,6 +33,8 @@ describe('server responses', () => {
     expect(res._responseCode).to.equal(200);
     expect(res._ended).to.equal(true);
     expect(acceptable).to.include(res._data.toString());
+    console.log(res);
+    console.log(res._data);
     done();
   });
 
@@ -55,6 +57,7 @@ describe('server responses', () => {
       expect(res._responseCode).to.equal(200);
       expect(res._ended).to.equal(true);
       done();
+    });
   });
 
   var postTestFile = path.join('.', 'spec', 'water-lg.jpg');
